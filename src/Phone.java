@@ -32,15 +32,26 @@ public class Phone implements ServicePhone{
             System.out.println("Недостаточно заряда для совершения звонка!");
         }else {
         setCurrentBatteryPower(getCurrentBatteryPower()-minutes);
+            if(minutes == 1){
+                System.out.println("Звонок продожительностью " + minutes + " минута");
+                }
+            if(minutes > 1 && minutes<5){
+                System.out.println("Звонок продожительностью " + minutes + " минуты");
+            }
+            if(minutes > 5){
+                System.out.println("Звонок продожительностью " + minutes + " минут");
+            }
+
         }
     }
 
     @Override
     public void sendSMS() {
         if(getCurrentBatteryPower() < 1){
-            System.out.println("Недостаточно заряда для совершения звонка!");
+            System.out.println("Недостаточно заряда для отправки сообщения!");
         }else {
         setCurrentBatteryPower(getCurrentBatteryPower()-1);
+            System.out.println("Сообщение отправлено!");
         }
     }
 
@@ -53,6 +64,8 @@ public class Phone implements ServicePhone{
         if (getCurrentBatteryPower() > getMAXIMUM_BATTERY_POWER()){
             System.out.println("Аккумулятор полностью заряжен!");
             setCurrentBatteryPower(getMAXIMUM_BATTERY_POWER());
+        }else {
+            System.out.println("Аккумулятор заряжен на " + getCurrentBatteryPower());
         }
     }
 }
